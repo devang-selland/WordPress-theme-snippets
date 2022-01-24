@@ -39,10 +39,10 @@ if ( ! class_exists( 'THEME_NAME_ACF_Custom_Post_Type_Module' ) ) {
             $category_types_arr = array();
         
             // $category_types_arr[] = array(
-            // 'singular'  => 'Portfolio Type',
-            // 'plural'    => 'Portfolio Types',
-            // 'slug'      => 'portfolio-type',
-            // 'post_type' => 'portfolio',      
+            // 'singular'  => 'Taxonomy Singlar',
+            // 'plural'    => 'Taxonomy Plural',
+            // 'slug'      => 'taxonomy-name',
+            // 'post_type' => 'posttypename',      
             // );   
         
             return $category_types_arr;
