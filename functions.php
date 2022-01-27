@@ -21,11 +21,12 @@
  */
 $includes_files = array(
     'template-tags.php',
-    'theme-functions.php',
+	'customizer.php',
+	'THEME-NAME-acf-missing.php',
 );
 
 foreach($includes_files as $filename){
-    require_once 'includes/' . $filename ;
+    require_once 'inc/' . $filename ;
 }
 
 /*************************************/
@@ -34,8 +35,11 @@ foreach($includes_files as $filename){
  * Add required Class files.
  */
 $class_files = array(
+'class-THEME-NAME-eneque.php',	
+'class-THEME-NAME-custom-post-type-module.php', 
+'class-THEME-NAME-acf-theme-option.php',
+'class-THEME-NAME-acf-dynamic-gutenberg.php',
 'class-THEME-NAME-acf-theme-functions.php',	
-'class-THEME-NAME-custom-post-type-module.php',
 );
 foreach($class_files as $class_file){
     require_once 'classes/' . $class_file ;
