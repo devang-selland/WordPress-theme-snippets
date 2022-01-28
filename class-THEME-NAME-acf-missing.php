@@ -57,6 +57,5 @@ if ( ! class_exists( 'acf' ) ) {
         }
 
     }
-    
+    new THEME_NAME_ACF_Missing();
 }
-new THEME_NAME_ACF_Missing();
