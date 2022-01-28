@@ -17,15 +17,20 @@
     "url": "https://github.com/Automattic/_s/issues"
   },
   "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "autoprefixer": "^9.8.8",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-iconfont": "^10.0.3",
     "gulp-iconfont-css": "^3.0.0",
+    "gulp-postcss": "^9.0.1",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
-    "gulp-watch": "^5.0.1"
+    "gulp-watch": "^5.0.1",
+    "postcss": "^7.0.39",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   },
   "devDependencies": {
     "@wordpress/scripts": "^19.2.2",
