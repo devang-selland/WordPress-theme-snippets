@@ -8,8 +8,9 @@ const gulp = require('gulp'),
     watch = require('gulp-watch'),
     iconfont = require('gulp-iconfont'),
     iconfontCSS = require('gulp-iconfont-css'),
-    runTimestamp = Math.round(Date.now() / 1000);
-
+    runTimestamp = Math.round(Date.now() / 1000),
+    postcss = require('gulp-postcss'),
+    tailwindcss = require('tailwindcss');
 /**
  * Convert SVG icons into the font
  */
@@ -40,20 +41,22 @@ gulp.task('svgConvert', function () {
  */
 gulp.task('cssCompile', function () {
     return watch('assets/scss/**/*.scss', function () {
-        gulp.src(['assets/scss/*.scss', 'assets/scss/acf-block-scss/*.scss'])
+        gulp.src(['assets/scss/tailwind.scss','assets/scss/*.scss', 'assets/scss/acf-block-scss/*.scss'])
             //.pipe(sourcemaps.init())
             .pipe(sass().on('error', sass.logError))
             .pipe(cleanCSS())
             .pipe(concat('base-theme-main.css'))
             // .pipe(sourcemaps.write())
+            .pipe(postcss([tailwindcss('tailwind.config.js'), require('autoprefixer')]))
             .pipe(gulp.dest('assets/css/'));
 
-        gulp.src('assets/scss/acf-block-scss/*.scss')
+        gulp.src(['assets/scss/tailwind.scss', 'assets/scss/acf-block-scss/*.scss'])
             //.pipe(sourcemaps.init())
             .pipe(sass().on('error', sass.logError))
             .pipe(cleanCSS())
             .pipe(concat('base-theme-editor-styles.css'))
             //  .pipe(sourcemaps.write())
+            .pipe(postcss([tailwindcss('tailwind.config.js'), require('autoprefixer')]))
             .pipe(gulp.dest('assets/css/'));
     });
 });
@@ -65,8 +68,9 @@ gulp.task('jsConcat', function () {
     return watch('assets/js/*.js', function () {
         gulp.src([
             '!assets/js/compiled/main-min.js',
+            '!assets/js/acf-block-admin/*.js',
             'assets/js/*.js',
-            'assets/js/main.js'])
+        ])
             .pipe(concat('main-min.js'))
             .pipe(uglify())
             .pipe(gulp.dest('assets/js/compiled'))
