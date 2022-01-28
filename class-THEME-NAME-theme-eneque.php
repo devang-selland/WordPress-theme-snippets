@@ -68,15 +68,13 @@ if ( ! class_exists( 'THEME_NAME_Theme_Eneque' ) ) {
          */
         public function THEME_NAME_register_admin_styles() {
 
-            // Make path a variable so we don't write it twice ;)
+             // Make path a variable so we don't write it twice ;)
             $blockPath = '/assets/css/base-theme-editor-styles.css';
 
             // Enqueue block editor styles
             wp_enqueue_style(
                 'base-theme-editor-css',
-                get_template_directory_uri().$blockPath,
-                [ 'wp-blocks', 'wp-element', 'wp-i18n' ],
-                filemtime( get_template_directory_uri().$blockPath )	
+                get_theme_file_uri( $blockPath ),
             );
 
         }
